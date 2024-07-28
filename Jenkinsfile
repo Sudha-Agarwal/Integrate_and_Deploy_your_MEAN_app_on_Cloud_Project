@@ -4,25 +4,26 @@ pipeline {
     stages{
         stage('Checkout'){
             steps{
-                git url: 'https://github.com/Basanagoudapatil02/Project-on-Building-and-Deploying-a-Node.js-Application-with-Docker-on-Ubuntu.git', branch: 'main'
+                git url: 'https://github.com/Sudha-Agarwal/Integrate_and_Deploy_your_MEAN_app_on_Cloud_Project.git', branch: 'main'
             }
         }
         stage('Build'){
             steps{
-                sh 'sudo docker build . -t basanagoudapatil/nodo-todo-app-test:latest'
+                sh 'sudo docker build . -t sudhaagarwal/health-app-backend:latest'
             }
         }
         stage('Test image') {
             steps {
                 echo 'testing...'
-                sh 'sudo docker inspect --type=image basanagoudapatil/nodo-todo-app-test:latest '
+                sh 'sudo docker inspect --type=image sudhaagarwal/health-app-backend:latest'
             }
         }
         
         stage('Push'){
             steps{
-        	     sh "sudo docker login -u basanagoudapatil -p dckr_pat_OvN0lH_USJztUCkm0opyjz-yXNc"
-                 sh 'sudo docker push basanagoudapatil/nodo-todo-app-test:latest'
+        	     sh "sudo docker login -u sudhaagarwal -p Sudha@mangla1234"
+                 sh "sudo docker tag health-app-backend sudhaagarwal/health-app-backend:latest"
+                 sh 'sudo docker push sudhaagarwal/health-app-backend:latest'
             }
         }  
         stage('Deploy'){
