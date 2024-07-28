@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 //const dbConnectionString = process.env.MONGO_URI || 'mongodb://mongo:27017/myDB' // Use environment variable
-const uri = "mongodb+srv://sudhamangla:K9T946AxasXusG2F@cluster0.mgrqz5r.mongodb.net/healthDB?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://sudhamangla:<your-password>@cluster0.mgrqz5r.mongodb.net/healthDB?retryWrites=true&w=majority&appName=Cluster0";
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const doctorsRouter = require('./routes/doctors');
