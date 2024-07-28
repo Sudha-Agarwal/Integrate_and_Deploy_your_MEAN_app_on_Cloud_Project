@@ -1,0 +1,39 @@
+To build docker image
+docker compose up --build(recommended)
+
+create an account on docker hub
+
+on cmd:
+docker login
+it will prompt for docker hub username and password
+
+tag your image
+docker tag health-app-backend <your docker hub username>/health-app-backend:latest
+docker push <your docker hub username>/health-app-backend:latest
+
+
+create an EC2 instance(Amazon Linux)
+in the security group, add inbound rule for port 3000(Custom TCP)
+
+for mongodb we are using mongodb atlas.
+in atlas go to network access and add the public ip of your EC2 instance as allowed ip
+
+connect to your EC2 instance
+install docker on that instance
+sudo su -
+sudo yum update -y
+sudo yum install docker -y
+sudo systemctl start docker
+
+
+now pull the image from docker hub
+docker pull sudhaagarwal/health-app-backend:latest
+
+docker run --name health-app -p 3000:3000 sudhaagarwal/health-app-backend:latest
+
+you will public ip for EC2 instance
+your application would be accessible at
+<your-ec2-public-ip>:3000
+
+
+

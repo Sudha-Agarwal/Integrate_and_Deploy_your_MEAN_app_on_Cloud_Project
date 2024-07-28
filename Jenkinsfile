@@ -21,7 +21,7 @@ pipeline {
         
         stage('Push'){
             steps{
-        	     sh "sudo docker login -u sudhaagarwal -p Sudha@mangla1234"
+        	     sh "sudo docker login -u sudhaagarwal -p"
                  sh "sudo docker tag health-app-backend sudhaagarwal/health-app-backend:latest"
                  sh 'sudo docker push sudhaagarwal/health-app-backend:latest'
             }
