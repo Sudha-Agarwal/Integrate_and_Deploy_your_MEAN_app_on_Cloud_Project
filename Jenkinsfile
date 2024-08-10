@@ -21,14 +21,13 @@ pipeline {
         }
         stage("Tag Image"){
             steps{
-                bat 'docker tag mean-app-backend sudhaagarwal/mean-app-backend:latest'
+                bat 'docker tag health-app-backend sudhaagarwal/health-app-backend:latest'
             }
         }
 
         stage('Push Image'){
             steps{
         	     bat "docker login -u sudhaagarwal -p Sudha@123"
-                 bat "docker tag health-app-backend sudhaagarwal/health-app-backend:latest"
                  bat 'docker push sudhaagarwal/health-app-backend:latest'
             }   
         }
