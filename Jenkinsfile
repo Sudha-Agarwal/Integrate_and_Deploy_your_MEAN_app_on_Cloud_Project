@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build'){
             steps{
-                sh 'docker build . -t sudhaagarwal/health-app-backend:latest'
+                sh 'docker build . -t health-app-backend:latest'
             }
         }
         
