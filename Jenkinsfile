@@ -33,13 +33,21 @@ pipeline {
             }   
         }
 
+    stages{
+
+        stage('Test'){
+            steps{
+                bat 'whoami'
+            }
+        }
 
         stage('Deploy'){
             steps
             {
                 // Use double backslashes for Windows paths or forward slashes
                 bat """
-                    ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo Hello, World!"
+                    ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} ^
+                    "docker stop health-app-backend || true && docker rm health-app-backend || true && docker login -u sudhaagarwal -p Sudha@123 && docker run -d --name health-app-backend -p 3000:3000 sudhaagarwal/health-app-backend:latest "
                 """
             }
         }
