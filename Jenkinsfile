@@ -1,6 +1,12 @@
 pipeline {
     agent any
     
+    environment {
+    // Define environment variables if needed
+    SSH_CREDENTIALS_ID = '3.83.67.227'
+    EC2_HOST = '3.83.67.227'
+    }
+
     stages{
         stage('Checkout'){
             steps{
@@ -26,11 +32,7 @@ pipeline {
             }   
         }
 
-        environment {
-        // Define environment variables if needed
-        SSH_CREDENTIALS_ID = '3.83.67.227'
-        EC2_HOST = '3.83.67.227'
-    }
+
         stage('Deploy'){
             steps
             {
