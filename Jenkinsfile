@@ -36,12 +36,7 @@ pipeline {
         stage('Deploy'){
             steps
             {
-               sshagent([SSH_CREDENTIALS_ID]) {
-                    // Running a simple command on the EC2 instance
-                    bat """
-                        ssh -o StrictHostKeyChecking=no ec2-user@%EC2_HOST% "echo 'Connected to EC2 instance!'"
-                    """
-                }
+                ssh -i C:\\Users\\Lenovo\\Downloads\\key1.pem ec2-user@3.83.67.227
             }
         }
     }
