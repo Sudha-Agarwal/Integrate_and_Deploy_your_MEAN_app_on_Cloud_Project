@@ -38,8 +38,7 @@ pipeline {
             steps
             {
                 // Use double backslashes for Windows paths or forward slashes
-                sh """
-                    chmod 400 ${SSH_KEY_PATH}
+                bat """
                     ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo Hello, World!"
                 """
             }
