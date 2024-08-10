@@ -25,5 +25,18 @@ pipeline {
                  bat 'docker push sudhaagarwal/health-app-backend:latest'
             }   
         }
+
+        stage('Deploy'){
+            steps
+            {
+                def remote = [:]
+                remote.name = 'ec2'
+                remote.host = 'your-ec2-public-ip'
+                remote.user = 'ec2-user' // Using 'ec2-user' for Amazon Linux
+                remote.identityFile = '/path/to/your/private-key.pem'
+                remote.identityFile = 'C:\\Users\\Lenovo\\Downloads\\key1.pem' // Windows path format
+
+            }
+        }
     }
 }
