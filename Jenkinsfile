@@ -1,10 +1,11 @@
 pipeline {
     agent any
-    
+
     environment {
-    // Define environment variables if needed
-    SSH_CREDENTIALS_ID = 'my-ssh-id'
-    EC2_HOST = '3.83.67.227'
+        SSH_CREDENTIALS_ID = 'my-ssh-id'
+        SSH_KEY_PATH = 'C:\\Users\\Lenovo\\Downloads\\key1.pem'
+        SSH_USER = 'ec2-user'
+        SSH_HOST = '3.83.67.227'
     }
 
     stages{
@@ -36,7 +37,11 @@ pipeline {
         stage('Deploy'){
             steps
             {
-                ssh -i C:\\Users\\Lenovo\\Downloads\\key1.pem ec2-user@3.83.67.227
+                // Use double backslashes for Windows paths or forward slashes
+                sh """
+                    chmod 400 ${SSH_KEY_PATH}
+                    ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo Hello, World!"
+                """
             }
         }
     }
