@@ -33,14 +33,12 @@ pipeline {
             }   
         }
 
-    stages{
-
         stage('Test'){
             steps{
                 bat 'whoami'
             }
         }
-
+ 
         stage('Deploy'){
             steps
             {
