@@ -20,9 +20,9 @@ pipeline {
 
         stage('Push Image'){
             steps{
-        	     bat "sudo docker login -u sudhaagarwal -p Sudha@123"
-                 bat "sudo docker tag health-app-backend sudhaagarwal/health-app-backend:latest"
-                 bat 'sudo docker push sudhaagarwal/health-app-backend:latest'
+        	     bat "docker login -u sudhaagarwal -p Sudha@123"
+                 bat "docker tag health-app-backend sudhaagarwal/health-app-backend:latest"
+                 bat 'docker push sudhaagarwal/health-app-backend:latest'
             }   
         }
     }
