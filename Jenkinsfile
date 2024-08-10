@@ -25,4 +25,5 @@ pipeline {
                  bat 'sudo docker push sudhaagarwal/health-app-backend:latest'
             }   
         }
+    }
 }
