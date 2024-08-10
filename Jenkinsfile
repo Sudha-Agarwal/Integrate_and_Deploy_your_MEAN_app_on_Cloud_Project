@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         SSH_CREDENTIALS_ID = 'my-ssh-id'
-        SSH_KEY_PATH = 'C:\\Users\\Lenovo\\Downloads\\key1.pem'
+        SSH_KEY_PATH = 'C:\\Users\\Lenovo\\Downloads\\login-key.pem'
         SSH_USER = 'ec2-user'
-        SSH_HOST = '3.83.67.227'
+        SSH_HOST = '3.82.231.204'
     }
 
     stages{
