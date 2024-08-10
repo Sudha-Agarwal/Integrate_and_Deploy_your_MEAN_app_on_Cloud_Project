@@ -3,7 +3,7 @@ pipeline {
     
     environment {
     // Define environment variables if needed
-    SSH_CREDENTIALS_ID = 'my-ssh-key'
+    SSH_CREDENTIALS_ID = 'my-ssh-id'
     EC2_HOST = '3.83.67.227'
     }
 
