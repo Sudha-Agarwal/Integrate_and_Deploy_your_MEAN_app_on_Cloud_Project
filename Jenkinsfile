@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Build '){
             steps{
-                bat 'docker compose '
+                bat 'docker compose'
             }
         }
         stage("Tag Image"){
