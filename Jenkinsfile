@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Build '){
             steps{
-                bat 'docker-compose build'
+                bat 'docker-compose build --no-cache'
             }
         }
         stage("Tag Image"){
