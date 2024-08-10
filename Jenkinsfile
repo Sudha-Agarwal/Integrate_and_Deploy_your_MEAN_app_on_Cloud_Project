@@ -26,16 +26,20 @@ pipeline {
             }   
         }
 
+        environment {
+        // Define environment variables if needed
+        SSH_CREDENTIALS_ID = '3.83.67.227'
+        EC2_HOST = '3.83.67.227'
+    }
         stage('Deploy'){
             steps
             {
-                def remote = [:]
-                remote.name = 'ec2'
-                remote.host = 'your-ec2-public-ip'
-                remote.user = 'ec2-user' // Using 'ec2-user' for Amazon Linux
-                remote.identityFile = '/path/to/your/private-key.pem'
-                remote.identityFile = 'C:\\Users\\Lenovo\\Downloads\\key1.pem' // Windows path format
-
+               sshagent([SSH_CREDENTIALS_ID]) {
+                    // Running a simple command on the EC2 instance
+                    bat """
+                        ssh -o StrictHostKeyChecking=no ec2-user@%EC2_HOST% "echo 'Connected to EC2 instance!'"
+                    """
+                }
             }
         }
     }
