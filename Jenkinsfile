@@ -7,9 +7,14 @@ pipeline {
                 git url: 'file:///g:/Sudha/Simplilearn/code/Health-app', branch: 'main'
             }
         }
-        stage('Build'){
+        stage('Build '){
             steps{
-                sh 'docker build . -t health-app-backend:latest'
+                bat 'docker compose '
+            }
+        }
+        stage("Tag Image"){
+            steps{
+                bat 'docker tag mean-app-backend sudhaagarwal/mean-app-backend:latest'
             }
         }
         
