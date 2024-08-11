@@ -33,7 +33,7 @@ pipeline{
             steps{
                 bat """
                 ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} ^
-                "docker stop health-app || true && docker rm health-app || true && docker rmi sudhaagarwal/health-app:latest && docker pull sudhaagarwal/health-app:latest && docker run --name health-app -p 3000:3000 sudhaagarwal/health-app:latest
+                "docker stop health-app || true && docker rm health-app || true && docker rmi sudhaagarwal/health-app:latest && docker pull sudhaagarwal/health-app:latest && docker run -d --name health-app -p 3000:3000 sudhaagarwal/health-app:latest
                 """
             }
         }
