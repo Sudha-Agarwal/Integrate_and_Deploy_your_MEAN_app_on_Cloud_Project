@@ -18,5 +18,11 @@ pipeline{
                 bat 'docker tag health-app sudhaagarwal/health-app:latest'
             }
         }
+        stage('Push Image'){
+            steps{
+                bat 'docker login -u sudhaagarwal -p Sudha@123'
+                bat 'docker push sudhaagarwal/health-app:latest'
+            }
+        }
     }
 }
