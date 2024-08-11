@@ -1,5 +1,10 @@
 pipeline{
     agent any
+    environment{
+        SSH_KEY_PATH='C:\\Users\\Lenovo\\Downloads\\login2.pem'
+        SSH_USER='ec2-user'
+        SSH_HOST='44.211.154.250'
+    }
 
     stages{
         stage('checkout'){
@@ -10,7 +15,7 @@ pipeline{
 
         stage('Build'){
             steps{
-                bat 'docker-compose build'
+                bat 'docker-compose build --no-cache'
             }
         }
         stage('Tag Image'){
@@ -22,6 +27,13 @@ pipeline{
             steps{
                 bat 'docker login -u sudhaagarwal -p Sudha@123'
                 bat 'docker push sudhaagarwal/health-app:latest'
+            }
+        }
+        stage('Deploy'){
+            steps{
+                bat """
+                ssh -i ${SSH_KEY_PATH} -o StrictHostChecking=no ${SSH_USER}@${SSH_HOST}
+                """
             }
         }
     }
